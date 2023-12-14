@@ -24,6 +24,7 @@
   position: relative;
   left: 25px;
   bottom: 9px;
+
 }
 
 .products-page {
@@ -34,7 +35,7 @@
   text-align: left;
 }
 .products-page .right-side {
-  background-color: blue;
+
   margin: 2rem;
 }
 .products-page .left-side {
@@ -52,24 +53,18 @@
   grid-template-columns: 1fr 1fr 1fr 1fr;
   align-items: flex-start;
 }
-.xs-circle,
-.s-circle {
+
+.circle {
   width: 35px;
   height: 35px;
   border-radius: 50%;
   text-align: center;
   margin: 0.5rem;
   border: 1px solid #fff;
+ 
+  cursor: pointer;
 }
-#circle {
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  text-align: center;
-  margin: 0.5rem;
-  border: 1px solid #fff;
-  
-}
+
 .black-circle {
   background-color: black;
   color: #fff;
