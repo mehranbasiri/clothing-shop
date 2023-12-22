@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import GithubCorner from "react-github-corner";
-import cartIcon from "../static/cart-icon.png";
 import "./Home.css";
 import Products from "../products/Products";
+import Cart from "./cart/Cart";
 const Home = () => {
   const [circle, setCricle] = useState(false);
   const [data, setData] = useState([]);
   const [productFilter, setProductFilter] = useState([]);
+  const [cartToggle, setCartToggle] = useState(false);
   const sizeItem = ["XS", "S", "M", "ML", "L", "XL", "XXL"];
 
   useEffect(() => {
@@ -17,19 +18,22 @@ const Home = () => {
         setData(response.data);
         setProductFilter(response.data);
       })
+
       .catch((err) => console.log(err));
   }, []);
 
-  const handleFilter = (e) => {
+  const handleFilter = (e, item) => {
     const filterValue = e.target.getAttribute("value");
-    console.log(filterValue);
+
     if (filterValue === "XS") {
       setProductFilter(data.filter((itm) => itm.availableSizes[1] === "XS"));
-      setCricle(true);
+      setCricle(!circle);
+      console.log("item" + circle);
     }
     if (filterValue === "L") {
       setProductFilter(data.filter((itm) => itm.availableSizes[1] === "L"));
       setCricle(true);
+      console.log("item" + circle);
     }
     if (filterValue === "XL") {
       setProductFilter(data.filter((itm) => itm.availableSizes[2] === "XL"));
@@ -45,17 +49,11 @@ const Home = () => {
     }
     if (filterValue === "ML") {
       setProductFilter(data.filter((itm) => itm.availableSizes[1] === "ML"));
-    } else{
+    } else {
       console.log(false);
-      setCricle(false);
     }
   };
 
-  console.log(productFilter);
-  // const handleFilter = (event) => {
-  //   setProductFilter(data.filter((f) => f.style === "Wine"));
-  // };
-  // console.log(productFilter);
   return (
     <div>
       <GithubCorner
@@ -65,9 +63,9 @@ const Home = () => {
         size={80}
         direction="left"
       />
-      <div className="cart-png">
-        <img src={cartIcon} alt="" />
-        <div className="circle-box-counter">0</div>
+      <div className="cart-box" onClick={() => setCartToggle(!cartToggle)}>
+        {/* {cartToggle ? <Cart /> : ""} */}
+        <Cart />
       </div>
       <div className="products-page">
         <div className="left-side">
@@ -76,57 +74,16 @@ const Home = () => {
             {sizeItem.map((item, index) => (
               <div
                 key={index}
-                className={
-                  circle ? "circle black-circle" : "circle white-circle"
-                }
+                className={`circle ${item.active ? "active" : ""}`}
                 value={item}
                 onClick={handleFilter}
               >
+                {console.log("i" + item)}
                 <span value={item} onClick={handleFilter}>
                   {item}
                 </span>
               </div>
             ))}
-            {/* <div
-              className={`${
-                circle ? "circle black-circle" : "circle white-circle"
-              }`}
-              onClick={() => setCricle(true)}
-            >
-              <span>XS</span>
-            </div>{" "}
-            <div
-              className={`${
-                circle ? "circle black-circle" : "circle white-circle"
-              }`}
-              onClick={toggleCircle}
-            >
-              <span>XS</span>
-            </div>{" "}
-            <div
-              className={`${
-                circle ? "circle black-circle" : "circle white-circle"
-              }`}
-              onClick={toggleCircle}
-            >
-              <span>XS</span>
-            </div>{" "}
-            <div
-              className={`${
-                circle ? "circle black-circle" : "circle white-circle"
-              }`}
-              onClick={toggleCircle}
-            >
-              <span>XS</span>
-            </div>{" "}
-            <div
-              className={`${
-                circle ? "circle black-circle" : "circle white-circle"
-              }`}
-              onClick={toggleCircle}
-            >
-              <span>XS</span>
-            </div> */}
           </div>
         </div>
         <div className="right-side">

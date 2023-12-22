@@ -1,13 +1,13 @@
-import './App.css';
-import Home from './home/Home';
-
+import "./App.css";
+import Home from "./home/Home";
+import { CartProvider } from "./context/CartContext";
 function App() {
-
-  
   return (
-    <div className="App">
-      <Home />
-    </div>
+    <CartProvider>
+      <div className="App">
+        <Home />
+      </div>
+    </CartProvider>
   );
 }
 
