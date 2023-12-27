@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useContext } from "react";
-import { CartContext } from "../context/CartContext";
+// import { CartContext } from "../context/CartContext";
+import CartContext from "../context2/cart/CartContext";
+const ProductsItem = ({ product, setCartShow }) => {
+  const { addToCart } = useContext(CartContext);
+  // const productQuantity = cart.getproductQuantity(product.id);
 
-const ProductsItem = ({ product }) => {
-  const cart = useContext(CartContext);
-  const productQuantity = cart.getproductQuantity(product.id);
-  console.log(productQuantity);
+  // function addToCartButton() {
+  //   cart.addItemToCart(product.id);
+  //   setCartShow(true);
+  // }
 
   return (
     <div className="products-item">
@@ -15,9 +19,7 @@ const ProductsItem = ({ product }) => {
         <h5>{product.title}</h5>
         <div className="line"></div>
         <span>${product.price}</span>
-        <button onClick={() => cart.addItemToCart(product.id)}>
-          Add to Card
-        </button>
+        <button onClick={() => addToCart(product)}>Add to Card</button>
       </div>
     </div>
   );

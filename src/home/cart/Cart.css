@@ -80,6 +80,10 @@
   position: relative;
   left: 25px;
   bottom: 9px;
+  color: #000;
+  font-size: 13px;
+  font-weight: bold;
+
 }
 
 .cart-items-container {

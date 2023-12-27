@@ -5,10 +5,13 @@ import "./Home.css";
 import Products from "../products/Products";
 import Cart from "./cart/Cart";
 const Home = () => {
-  const [circle, setCricle] = useState(false);
+  const [circle, setCricle] = useState([]);
   const [data, setData] = useState([]);
   const [productFilter, setProductFilter] = useState([]);
   const [cartToggle, setCartToggle] = useState(false);
+
+  const [cartShow, setCartShow] = useState(false);
+
   const sizeItem = ["XS", "S", "M", "ML", "L", "XL", "XXL"];
 
   useEffect(() => {
@@ -22,33 +25,36 @@ const Home = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  const handleFilter = (e, item) => {
+  const handleFilter = (e) => {
     const filterValue = e.target.getAttribute("value");
 
     if (filterValue === "XS") {
       setProductFilter(data.filter((itm) => itm.availableSizes[1] === "XS"));
-      setCricle(!circle);
-      console.log("item" + circle);
+      setCricle(["XS"]);
     }
     if (filterValue === "L") {
       setProductFilter(data.filter((itm) => itm.availableSizes[1] === "L"));
-      setCricle(true);
-      console.log("item" + circle);
+      setCricle(["L"]);
     }
     if (filterValue === "XL") {
       setProductFilter(data.filter((itm) => itm.availableSizes[2] === "XL"));
+      setCricle(["XL"]);
     }
     if (filterValue === "XXL") {
       setProductFilter(data.filter((itm) => itm.availableSizes[3] === "XXL"));
+      setCricle(["XXL"]);
     }
     if (filterValue === "S") {
       setProductFilter(data.filter((itm) => itm.availableSizes[0] === "S"));
+      setCricle(["S"]);
     }
     if (filterValue === "M") {
       setProductFilter(data.filter((itm) => itm.availableSizes[0] === "M"));
+      setCricle(["M"]);
     }
     if (filterValue === "ML") {
       setProductFilter(data.filter((itm) => itm.availableSizes[1] === "ML"));
+      setCricle(["ML"]);
     } else {
       console.log(false);
     }
@@ -64,8 +70,7 @@ const Home = () => {
         direction="left"
       />
       <div className="cart-box" onClick={() => setCartToggle(!cartToggle)}>
-        {/* {cartToggle ? <Cart /> : ""} */}
-        <Cart />
+        <Cart cartShow={cartShow} setCartShow={setCartShow} />
       </div>
       <div className="products-page">
         <div className="left-side">
@@ -74,11 +79,10 @@ const Home = () => {
             {sizeItem.map((item, index) => (
               <div
                 key={index}
-                className={`circle ${item.active ? "active" : ""}`}
+                className={`circle ${circle == item ? "active" : ""}`}
                 value={item}
                 onClick={handleFilter}
               >
-                {console.log("i" + item)}
                 <span value={item} onClick={handleFilter}>
                   {item}
                 </span>
@@ -88,7 +92,11 @@ const Home = () => {
         </div>
         <div className="right-side">
           <p>products found</p>
-          <Products data={data} productFilter={productFilter} />
+          <Products
+            data={data}
+            productFilter={productFilter}
+            setCartShow={setCartShow}
+          />
         </div>
       </div>
     </div>
