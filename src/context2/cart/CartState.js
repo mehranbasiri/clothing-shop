@@ -10,7 +10,8 @@ const CartState = ({ children }) => {
   const initialState = {
     showCart: false,
     cartItems: [],
-    quantity: 0,
+    total_item: "",
+    total_amount:""
   };
 
   const [state, dispatch] = useReducer(CartReducer, initialState);

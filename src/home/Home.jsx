@@ -91,7 +91,6 @@ const Home = () => {
           </div>
         </div>
         <div className="right-side">
-          <p>products found</p>
           <Products
             data={data}
             productFilter={productFilter}

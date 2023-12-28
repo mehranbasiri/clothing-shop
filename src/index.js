@@ -1,17 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import CartState from "./context2/cart/CartState";
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+// import CartState from "./context2/cart/CartState";
+import { Context } from "./context3/Context";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <CartState>
-    <App />
+    {/* <CartState> */}
+    <Context>
+      <App />
+    </Context>
 
-    </CartState>
+    {/* </CartState> */}
   </React.StrictMode>
 );
 

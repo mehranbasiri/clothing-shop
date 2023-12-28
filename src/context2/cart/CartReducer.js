@@ -36,7 +36,6 @@ const CartReducer = (state, action, id) => {
           ...state,
 
           cartItems: [...state.cartItems, { ...action.payload, quantity: 1 }],
-          
         };
       }
     }

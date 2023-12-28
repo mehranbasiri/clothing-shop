@@ -36,10 +36,7 @@
 
   cursor: pointer;
 }
-/* .circle::before {
-  background-color: black;
-  color: #fff;
-} */
+
 .active {
   background-color: black;
   color: #fff;
@@ -59,4 +56,9 @@
   font-size: 11px;
   position: relative;
   top: 7px;
+}
+.right-side .length-of-product {
+  font-size: 18px;
+  font-weight: 300;
+  margin-bottom: 0;
 }

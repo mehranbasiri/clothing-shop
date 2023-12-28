@@ -59,8 +59,9 @@
   height: 50px;
   position: relative;
   top: 4rem;
-  left: 7.5rem;
+  left: 7rem;
   padding: 0.5rem;
+
   align-items: center;
   text-align: center;
   cursor: pointer;
@@ -68,7 +69,6 @@
 
 .cart-png-active img {
   margin-top: 12px;
-
   width: 27px;
   height: 27px;
 }
@@ -83,18 +83,21 @@
   color: #000;
   font-size: 13px;
   font-weight: bold;
-
 }
 
 .cart-items-container {
   margin: -5rem 1rem 1rem 1rem;
   text-align: center;
+  overflow-y: scroll;
+  height: 600px;
 }
+
 .cart-item {
   display: flex;
   gap: 0.5rem;
-  margin-top: 5rem;
+  margin-top: 1rem;
   width: 100%;
+  overflow: hidden;
 }
 .cart-item img {
   width: 80px;
@@ -195,4 +198,19 @@
   outline: none;
   transition: background-color 0.2s ease 0s;
   font-size: 1rem;
+}
+
+.quantity-btns :first-child,
+.quantity-btns :nth-child(2) {
+  background-color: #0a0a0a;
+  border: none;
+  width: 23px;
+  height: 23px;
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+  opacity: 0.85;
+}
+.cart-subtotal button:hover {
+  background-color: #060606;
 }
