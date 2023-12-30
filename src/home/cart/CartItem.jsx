@@ -1,6 +1,5 @@
 import React from "react";
 
-import { GetProductData } from "../../data/Data";
 import { IoMdClose } from "react-icons/io";
 
 const CartItem = ({ item, dispatch }) => {

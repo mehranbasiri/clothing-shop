@@ -1,6 +1,5 @@
 import "./App.css";
 import Home from "./home/Home";
-// import { CartProvider } from "./context/CartContext";
 function App() {
   return (
     

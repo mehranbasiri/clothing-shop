@@ -2,11 +2,10 @@ import React, { useState, useContext } from "react";
 import "./Cart.css";
 import cartIcon from "../../static/cart-icon.png";
 import { IoMdClose } from "react-icons/io";
-import { CartContext } from "../../context3/Context";
+import { CartContext } from "../../context/Context";
 import CartItem from "./CartItem";
 const Cart = ({ cartShow, setCartShow }) => {
-  // const cart = useContext(CartContext);
-  // const { cartItems } = useContext(CartContext);
+  
 
   const Globalstate = useContext(CartContext);
   const state = Globalstate.state;
@@ -14,7 +13,6 @@ const Cart = ({ cartShow, setCartShow }) => {
   const total = state.reduce((total, item) => {
     return total + item.price * item.quantity;
   }, 0);
-  // const { showCart, cartItem, showHideCart } = useContext(CartContext);
   return (
     <div className={`cart-side ${cartShow ? "cart-show" : ""}`}>
       <div className="cart-png" onClick={() => setCartShow(!cartShow)}>
@@ -43,7 +41,7 @@ const Cart = ({ cartShow, setCartShow }) => {
             ))}
           </>
         ) : (
-          <p>Add some products in the cart</p>
+          <p className="text-empty-cart">Add some products in the cart</p>
         )}
       </div>
       <div className="cart-subtotal">

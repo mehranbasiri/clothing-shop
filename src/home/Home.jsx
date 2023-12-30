@@ -11,15 +11,19 @@ const Home = () => {
   const [cartToggle, setCartToggle] = useState(false);
 
   const [cartShow, setCartShow] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const sizeItem = ["XS", "S", "M", "ML", "L", "XL", "XXL"];
 
   useEffect(() => {
+    setIsLoading(true);
+
     axios
       .get("http://localhost:5000/products")
       .then((response) => {
         setData(response.data);
         setProductFilter(response.data);
+        setIsLoading(false);
       })
 
       .catch((err) => console.log(err));
@@ -89,12 +93,17 @@ const Home = () => {
               </div>
             ))}
           </div>
+
+          <p>Leave a star on Github if this repository was useful </p>
+
+          <a href="https://github.com/mehranbasiri/clothing-shop.git">Star</a>
         </div>
         <div className="right-side">
           <Products
             data={data}
             productFilter={productFilter}
             setCartShow={setCartShow}
+            isLoading={isLoading}
           />
         </div>
       </div>

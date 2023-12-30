@@ -89,9 +89,17 @@
   margin: -5rem 1rem 1rem 1rem;
   text-align: center;
   overflow-y: scroll;
+
   height: 600px;
 }
+.cart-items-container::-webkit-scrollbar {
+  display: none;
+}
+.cart-items-container .text-empty-cart {
+  align-items: center;
 
+  margin-top: 5rem;
+}
 .cart-item {
   display: flex;
   gap: 0.5rem;
@@ -109,7 +117,7 @@
   align-items: center;
   justify-items: flex-end;
   text-align: left;
-  margin: 0rem 1rem;
+  margin: 0rem 0.1rem 0rem 1rem;
   width: 100%;
 }
 .cart-info-left h4 {
@@ -213,4 +221,29 @@
 }
 .cart-subtotal button:hover {
   background-color: #060606;
+}
+
+@media screen and (max-width: 420px) {
+  .cart-side {
+    width: 100%;
+  }
+
+  .cart-png svg {
+    position: relative;
+    top: 0rem;
+    left: 3rem;
+    padding: 0.5rem;
+  }
+  .cart-png-active {
+    position: relative;
+    top: 4rem;
+    left: 6rem;
+  }
+
+  .cart-info-left h4 {
+    font-size: 1rem;
+  }
+  .cart-info-left p {
+    font-size: 1rem;
+  }
 }

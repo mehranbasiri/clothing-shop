@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useContext } from "react";
-import { CartContext } from "../context3/Context";
+import { CartContext } from "../context/Context";
 const ProductsItem = ({ product }) => {
-  
-
   const Globalstate = useContext(CartContext);
   const dispatch = Globalstate.dispatch;
   return (

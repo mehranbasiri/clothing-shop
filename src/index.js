@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 // import CartState from "./context2/cart/CartState";
-import { Context } from "./context3/Context";
+import { Context } from "./context/Context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
